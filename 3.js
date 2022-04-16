@@ -1,37 +1,31 @@
-function orderWeight(strng) {
-  let arr = strng.split(" ");
-  let res = [];
-  let theFinal = [];
-
-  for (i = 0; i < arr.length; i++) {
-    let f = arr[i].split("").reduce(function (prev, curr) {
-      return +prev + +curr;
+function unusedDigits(...args) {
+  let nums = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  let result = [];
+  let arr = [...args];
+  if (!arr) {
+    return [];
+  } else {
+    let arr2 = arr.map((digit) => {
+      return String(digit).split("");
     });
-    res.push(f);
+    if (!arr2) {
+      return [];
+    } else {
+      let arr3 = arr2.reduce(function (a, b) {
+        return a.concat(b);
+      });
+
+      for (i = 0; i < nums.length; i++) {
+        if (!arr3.includes(nums[i])) {
+          console.log(arr2.includes(nums[i]));
+          result.push(nums[i]);
+        }
+      }
+
+      return result.join("");
+    }
   }
-
-  fin = [...res];
-  fin.sort(function (a, b) {
-    return a - b;
-  });
-
-  // console.log(arr, res, fin);
-
-  for (i = 0; i < arr.length; i++) {
-    let c = res.indexOf(fin[i]);
-    console.log(res.indexOf(fin[i]));
-    theFinal.push(arr.slice(c, c + 1));
-    console.log(theFinal);
-    res.shift();
-    fin.shift();
-    // console.log(res, fin);
-  }
-  return theFinal
-    .reduce(function (a, b) {
-      return a.concat(b);
-    })
-    .join(" ");
 }
 
-// console.log(orderWeight("103 123 4444 99 2000"));
-console.log(orderWeight("2000 10003 1234000 44444444 9999 11 11 22 123")); //"11 11 2000 10003 22 123 1234000 44444444 9999"
+console.log(unusedDigits(12, 34, 56, 78), "09");
+console.log(unusedDigits(2015, 8, 26), "3479");

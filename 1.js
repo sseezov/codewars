@@ -3,7 +3,6 @@ function findOdd(A) {
   let res;
   for (i = 0; i < arr.length; i++) {
     if (arr.filter((x) => x === arr[i]).length % 2 != 0) {
-      console.log("success");
       res = arr[i];
     }
   }
