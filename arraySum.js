@@ -6,8 +6,6 @@ function arraySum(arr) {
       return Number(x) == x;
     });
 
-  console.log(result);
-
   return result
     .map((p) => Number(p))
     .reduce(function (a, b) {
